@@ -1,0 +1,38 @@
+{
+  "scenario_id": "SC-AUTH-01",
+  "scenario_name": "JWT manipulācijas scenārijs",
+  "threat_category": "Autentifikācijas un autorizācijas draudi",
+  "execution_time": 0.05393695831298828,
+  "expected_result": "attack_blocked",
+  "actual_result": "vulnerability_found",
+  "accurate": false,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "invalid_signature",
+        "description": "JWT ar modificētu parakstu",
+        "response_code": 429,
+        "blocked": false
+      },
+      {
+        "name": "expired_token",
+        "description": "JWT ar novecojušu derīguma termiņu",
+        "response_code": 429,
+        "blocked": false
+      },
+      {
+        "name": "role_escalation",
+        "description": "JWT ar eskalētu lomu (user → admin)",
+        "response_code": 429,
+        "blocked": false
+      },
+      {
+        "name": "algorithm_none",
+        "description": "JWT ar alg: none (bez paraksta)",
+        "response_code": 429,
+        "blocked": false
+      }
+    ]
+  },
+  "timestamp": "20260522_154408"
+}

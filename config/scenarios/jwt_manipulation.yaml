@@ -1,0 +1,24 @@
+id: "SC-AUTH-01"
+name: "JWT manipulācijas scenārijs"
+threat_category: "Autentifikācijas un autorizācijas draudi"
+target_mechanism: "JWT"
+target_service: "http://localhost:8080"
+
+parameters:
+  jwt_secret: "test-secret-key-for-development"
+  target_endpoint: "/orders"
+  sub_scenarios:
+    - "invalid_signature"
+    - "expired_token"
+    - "role_escalation"
+    - "algorithm_none"
+
+steps:
+  - "Ielādēt scenārija konfigurāciju"
+  - "Izveidot savienojumu ar mērķa pakalpojumu"
+  - "Ģenerēt un modificēt JWT marķieri"
+  - "Nosūtīt modificētu pieprasījumu"
+  - "Reģistrēt rezultātus"
+  - "Ģenerēt atskaiti"
+
+expected_result: "attack_blocked"
