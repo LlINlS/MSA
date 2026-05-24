@@ -1,0 +1,45 @@
+{
+  "scenario_id": "SC-NET-01",
+  "scenario_name": "TLS pazemināšanas scenarijs",
+  "threat_category": "Tikla konteksta draudi",
+  "execution_time": 4.081736326217651,
+  "expected_result": "attack_blocked",
+  "actual_result": "vulnerability_found",
+  "accurate": false,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "http_plaintext",
+        "description": "Pieprasījums pa HTTP (bez TLS šifrēšanas)",
+        "response_code": 401,
+        "response_time_ms": 19.3,
+        "blocked": false,
+        "detail": "Serviss atbild pa HTTP — dati nav šifrēti"
+      },
+      {
+        "name": "missing_hsts",
+        "description": "HSTS (Strict-Transport-Security) galvenes pārbaude",
+        "response_code": 401,
+        "response_time_ms": 4.0,
+        "blocked": false,
+        "detail": "HSTS: NAV ATRASTS"
+      },
+      {
+        "name": "ssl_verify_disabled",
+        "description": "TLS sertifikāta validācijas pārbaude",
+        "response_code": null,
+        "blocked": false,
+        "detail": "HTTPS ports nav pieejams — TLS nav konfigurēts"
+      },
+      {
+        "name": "redirect_check",
+        "description": "HTTP → HTTPS pārvirzīšanas pārbaude",
+        "response_code": 401,
+        "response_time_ms": 12.59,
+        "blocked": false,
+        "detail": "Nav pārvirzīšanas uz HTTPS"
+      }
+    ]
+  },
+  "timestamp": "20260522_185838"
+}

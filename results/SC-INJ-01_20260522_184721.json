@@ -1,0 +1,67 @@
+{
+  "scenario_id": "SC-INJ-01",
+  "scenario_name": "SQL injection scenarijs",
+  "threat_category": "Lietojuma konteksta draudi",
+  "execution_time": 0.013651847839355469,
+  "expected_result": "attack_blocked",
+  "actual_result": "vulnerability_found",
+  "accurate": false,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "basic_or",
+        "description": "Klasiska OR injection",
+        "payload": "' OR '1'='1",
+        "response_code": 200,
+        "response_time_ms": 2.68,
+        "blocked": false
+      },
+      {
+        "name": "drop_table",
+        "description": "DROP TABLE komanda",
+        "payload": "'; DROP TABLE orders;--",
+        "response_code": 400,
+        "response_time_ms": 0.5,
+        "blocked": true
+      },
+      {
+        "name": "union_select",
+        "description": "UNION SELECT injection",
+        "payload": "' UNION SELECT * FROM users--",
+        "response_code": 400,
+        "response_time_ms": 3.2,
+        "blocked": true
+      },
+      {
+        "name": "comment_bypass",
+        "description": "Komentara apiesana",
+        "payload": "admin'--",
+        "response_code": 400,
+        "response_time_ms": 2.82,
+        "blocked": true
+      },
+      {
+        "name": "semicolon_chain",
+        "description": "Vaicajumu kjedosana ar semikolu",
+        "payload": "test; DELETE FROM orders",
+        "response_code": 400,
+        "response_time_ms": 0.85,
+        "blocked": true
+      },
+      {
+        "name": "safe_input",
+        "description": "Legals meklesanas pieprasijums (kontroles tests)",
+        "payload": "Laptop",
+        "response_code": 200,
+        "response_time_ms": 0.0,
+        "blocked": false
+      }
+    ],
+    "statistics": {
+      "total_payloads": 6,
+      "blocked": 4,
+      "passed": 2
+    }
+  },
+  "timestamp": "20260522_184721"
+}

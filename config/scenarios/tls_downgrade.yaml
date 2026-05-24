@@ -1,0 +1,25 @@
+id: "SC-TLSD-01"
+name: "TLS pazemināšanas scenarijs"
+threat_category: "Tikla konteksta draudi"
+target_mechanism: "TLS"
+target_service: "http://localhost:8080"
+
+parameters:
+  https_url: "https://localhost:8443"
+  http_url: "http://localhost:8080"
+  target_endpoint: "/orders"
+  sub_scenarios:
+    - "http_plaintext"
+    - "missing_hsts"
+    - "ssl_verify_disabled"
+    - "redirect_check"
+
+steps:
+  - "Ieladet scenarija konfiguraciju"
+  - "Parbaudi vai serviss atbild uz HTTP bez TLS"
+  - "Parbaudi vai serviss nosuta HSTS galveni"
+  - "Parbaudi TLS sertifikata validitati"
+  - "Parbaudi vai HTTP tiek parvirzits uz HTTPS"
+  - "Generet atskaiti"
+
+expected_result: "attack_blocked"

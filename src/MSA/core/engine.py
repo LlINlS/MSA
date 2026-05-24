@@ -11,11 +11,19 @@ from rich.table import Table
 from MSA.core.config import load_scenario
 from MSA.connectors.http_connector import HTTPConnector
 from MSA.scenarios.auth.jwt_manipulation import JwtManipulationScenario
+from MSA.scenarios.availability.dos_attack import DosAttackScenario
+from MSA.scenarios.injection.sql_injection import SqlInjectionScenario
+from MSA.scenarios.auth.tls_downgrade import TlsDowngradeScenario
+from MSA.scenarios.config.secret_leak import SecretExposureScenario
 
 console = Console()
 
 SCENARIO_REGISTRY = {
     "JWT": JwtManipulationScenario,
+    "DoS": DosAttackScenario,
+    "InputValidation": SqlInjectionScenario,
+    "TLS": TlsDowngradeScenario,
+    "SecretManagement": SecretExposureScenario,
 }
 
 def run_scenario(scenario_path: str, output_dir: str = "results") -> dict:

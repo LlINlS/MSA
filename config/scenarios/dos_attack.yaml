@@ -1,0 +1,21 @@
+id: "SC-AVAL-01"
+name: "DoS uzbrukuma scenarijs"
+threat_category: "Pieejamibas draudi"
+target_mechanism: "DoS"
+target_service: "http://localhost:8080"
+
+parameters:
+  target_endpoint: "/orders"
+  total_requests: 20
+  delay_between_ms: 50
+  rate_limit_threshold: 10
+
+steps:
+  - "Ieladet scenarija konfiguraciju"
+  - "Izveidot savienojumu ar merka pakalpojumu"
+  - "Nosutit pieprasijumu pludu"
+  - "Mert atbildes laikus un status kodus"
+  - "Noteikt vai tempa ierobezotajs aktivezejas"
+  - "Generet atskaiti"
+
+expected_result: "attack_blocked"

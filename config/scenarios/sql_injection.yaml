@@ -1,0 +1,37 @@
+id: "SC-INJ-01"
+name: "SQL injection scenarijs"
+threat_category: "Lietojuma konteksta draudi"
+target_mechanism: "InputValidation"
+target_service: "http://localhost:8080"
+
+parameters:
+  target_endpoint: "/orders/search"
+  payloads:
+    - name: "basic_or"
+      value: "' OR '1'='1"
+      description: "OR injection"
+    - name: "drop_table"
+      value: "'; DROP TABLE orders;--"
+      description: "DROP TABLE vaicajums"
+    - name: "union_select"
+      value: "' UNION SELECT * FROM users--"
+      description: "UNION SELECT injection"
+    - name: "comment_bypass"
+      value: "admin'--"
+      description: "Komentara apiesana ar --"
+    - name: "semicolon_chain"
+      value: "test; DELETE FROM orders"
+      description: "Vaicajumi (batched sql injection)"
+    - name: "safe_input"
+      value: "hello"
+      # parbaude ka netiek blokets pieprasijums kas nav launpratigs
+      description: "safe input (kontroles tests)"
+
+steps:
+  - "Ieladet scenarija konfiguraciju"
+  - "Izveidot savienojumu ar merka pakalpojumu"
+  - "Nosutit pieprasijumus ar SQL injection payload"
+  - "Parbaude vai ievades validacija bloke launpratigus pieprasijumus"
+  - "Generet atskaiti"
+
+expected_result: "attack_blocked"
