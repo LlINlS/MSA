@@ -10,7 +10,17 @@ Built with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the 
 # Features
 
 * TODO
+* src\MSA\scenarios -> tls, secretmanagment, dos attack + ?
+* same zem config\scenarios (3 imitacijas scenariji)
+* .html/xml atskaite -> izpildes laiks/parklajums u.c pec bakalaura metrikam
+* vel gui uzlabojumi
+* viegla CI/CD integracija *seit vel japadoma
+* validacija reala microserivce arhitektura (no LC projekta)
+* cleanup ar nevajadzigo no cookiecutter + bug fixes gui logikai
 
 ## Documentation
 
 * hello
+
+## Motivācijai
+😭😊👋💀✅🤩🤗
