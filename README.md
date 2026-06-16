@@ -34,6 +34,7 @@ venv problemainas:
 deactivate
 Remove-Item -Recurse -Force venv
 python -m venv venv
+pip install .
 .\venv\Scripts\Activate.ps1
 pip install -e .
 
