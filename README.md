@@ -1,5 +1,4 @@
 # MSA
-Hello (Hi)
 
 ## Author
 
@@ -21,7 +20,7 @@ Built with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the 
 ## Documentation
 
 * hello (hi)
-* defaulta:
+* default:
 python -m MSA.gui
 ___
 python -m MSA.core.engine --scenario config\scenarios\jwt_manipulation.yaml
@@ -30,7 +29,7 @@ python -m MSA.core.engine --scenario config\scenarios\sql_injection.yaml
 python -m MSA.core.engine --scenario config\scenarios\tls_downgrade.yaml
 python -m MSA.core.engine --scenario config\scenarios\secret_leak.yaml
 ___
-venv problemainas:
+MISC:
 deactivate
 Remove-Item -Recurse -Force venv
 python -m venv venv
@@ -40,4 +39,4 @@ pip install -e .
 
 
 ## Motivācijai
-😭😊👋💀✅🤩🤗
+
