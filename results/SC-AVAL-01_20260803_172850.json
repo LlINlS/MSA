@@ -2,7 +2,8 @@
   "scenario_id": "SC-AVAL-01",
   "scenario_name": "DoS uzbrukuma scenarijs",
   "threat_category": "Pieejamibas draudi",
-  "execution_time": 1.0567636489868164,
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 1095.9,
   "expected_result": "attack_blocked",
   "actual_result": "attack_blocked",
   "accurate": true,
@@ -31,87 +32,87 @@
       "total_requests": 20,
       "passed": 10,
       "blocked": 10,
-      "avg_response_time_ms": 0.67,
+      "avg_response_time_ms": 3.07,
       "activation_point": 11,
       "rate_limit_threshold": 10
     },
     "all_requests": [
       {
         "request_number": 1,
-        "status_code": 401,
-        "response_time_ms": 0.0,
+        "status_code": 200,
+        "response_time_ms": 9.81,
         "rate_limited": false
       },
       {
         "request_number": 2,
-        "status_code": 401,
-        "response_time_ms": 0.0,
+        "status_code": 200,
+        "response_time_ms": 8.9,
         "rate_limited": false
       },
       {
         "request_number": 3,
-        "status_code": 401,
-        "response_time_ms": 1.01,
+        "status_code": 200,
+        "response_time_ms": 5.78,
         "rate_limited": false
       },
       {
         "request_number": 4,
-        "status_code": 401,
-        "response_time_ms": 0.0,
+        "status_code": 200,
+        "response_time_ms": 3.71,
         "rate_limited": false
       },
       {
         "request_number": 5,
-        "status_code": 401,
-        "response_time_ms": 3.14,
+        "status_code": 200,
+        "response_time_ms": 5.0,
         "rate_limited": false
       },
       {
         "request_number": 6,
-        "status_code": 401,
-        "response_time_ms": 0.0,
+        "status_code": 200,
+        "response_time_ms": 3.77,
         "rate_limited": false
       },
       {
         "request_number": 7,
-        "status_code": 401,
-        "response_time_ms": 0.0,
+        "status_code": 200,
+        "response_time_ms": 2.01,
         "rate_limited": false
       },
       {
         "request_number": 8,
-        "status_code": 401,
-        "response_time_ms": 0.0,
+        "status_code": 200,
+        "response_time_ms": 1.68,
         "rate_limited": false
       },
       {
         "request_number": 9,
-        "status_code": 401,
+        "status_code": 200,
         "response_time_ms": 0.0,
         "rate_limited": false
       },
       {
         "request_number": 10,
-        "status_code": 401,
-        "response_time_ms": 2.03,
+        "status_code": 200,
+        "response_time_ms": 0.0,
         "rate_limited": false
       },
       {
         "request_number": 11,
         "status_code": 429,
-        "response_time_ms": 1.01,
+        "response_time_ms": 3.04,
         "rate_limited": true
       },
       {
         "request_number": 12,
         "status_code": 429,
-        "response_time_ms": 0.51,
+        "response_time_ms": 2.02,
         "rate_limited": true
       },
       {
         "request_number": 13,
         "status_code": 429,
-        "response_time_ms": 0.0,
+        "response_time_ms": 2.81,
         "rate_limited": true
       },
       {
@@ -123,40 +124,43 @@
       {
         "request_number": 15,
         "status_code": 429,
-        "response_time_ms": 0.54,
+        "response_time_ms": 3.38,
         "rate_limited": true
       },
       {
         "request_number": 16,
         "status_code": 429,
-        "response_time_ms": 0.0,
+        "response_time_ms": 1.75,
         "rate_limited": true
       },
       {
         "request_number": 17,
         "status_code": 429,
-        "response_time_ms": 0.0,
+        "response_time_ms": 3.33,
         "rate_limited": true
       },
       {
         "request_number": 18,
         "status_code": 429,
-        "response_time_ms": 1.55,
+        "response_time_ms": 2.3,
         "rate_limited": true
       },
       {
         "request_number": 19,
         "status_code": 429,
-        "response_time_ms": 2.01,
+        "response_time_ms": 0.0,
         "rate_limited": true
       },
       {
         "request_number": 20,
         "status_code": 429,
-        "response_time_ms": 1.61,
+        "response_time_ms": 2.05,
         "rate_limited": true
       }
     ]
   },
-  "timestamp": "20260522_184422"
+  "timestamp": "20260803_172850",
+  "mode": "protected",
+  "completed": true,
+  "execution_time": 1.0959033966064453
 }

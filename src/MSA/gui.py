@@ -1,7 +1,8 @@
-# gui msa simulatrom
+# gui msa rikam
 
 from __future__ import annotations
 
+import os
 import json
 import threading
 import tkinter as tk
@@ -19,7 +20,7 @@ from MSA.scenarios.config.secret_leak import SecretExposureScenario
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SCENARIO_DIR = PROJECT_ROOT / "config" / "scenarios"
-RESULTS_DIR = PROJECT_ROOT / "results"
+RESULTS_DIR = Path.cwd() / "results"
 
 SCENARIO_REGISTRY = {
     "JWT": JwtManipulationScenario,
@@ -29,12 +30,23 @@ SCENARIO_REGISTRY = {
     "SecretManagement": SecretExposureScenario,
 }
 
+def _read_mode_from_env():
+    # lasa MSA_MODE no ta pasa test_environment/.env, ko izmanto docker
+    here = Path(__file__).resolve()
+    for base in [here.parent, *here.parents]:
+        candidate = base / "test_environment" / ".env"
+        if candidate.exists():
+            for line in candidate.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if line.startswith("MSA_MODE="):
+                    return line.split("=", 1)[1].strip()
+    return "protected"
 
 class AttackSimulatorGUI:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
         self.root.title("MSA - Attack Simulator")
-        self.root.minsize(720, 520)
+        self.root.minsize(650, 520)
 
         self._running = False
         self._last_report: dict | None = None
@@ -47,10 +59,9 @@ class AttackSimulatorGUI:
         main = ttk.Frame(self.root, padding=10)
         main.pack(fill="both", expand=True)
 
-        ttk.Label(main, text="Microservice Attack Simulator", font=("", 14, "bold")).pack(anchor="w")
         ttk.Label(
             main,
-            text="hello (hi)",
+            text="Uzbrukumu imitācijas rīks",
             foreground="gray40",
         ).pack(anchor="w", pady=(0, 8))
 
@@ -75,9 +86,17 @@ class AttackSimulatorGUI:
             row=2, column=1, sticky="w", pady=2
         )
 
+        ttk.Label(config, text="Režīms:").grid(row=3, column=0, sticky="w", padx=(0, 6), pady=2)
+        self.mode_var = tk.StringVar(value=_read_mode_from_env())
+        ttk.Combobox(
+            config, textvariable=self.mode_var,
+            # state disabled, jo test environement .env nosaka vai pec _read_mode_from_env kads rezims
+            values=["protected", "unprotected"], state="disabled", width=16, 
+        ).grid(row=3, column=1, sticky="w", pady=2)
+
         self.meta_var = tk.StringVar(value="")
         ttk.Label(config, textvariable=self.meta_var, foreground="gray30").grid(
-            row=3, column=0, columnspan=2, sticky="w", pady=(4, 0)
+            row=4, column=0, columnspan=2, sticky="w", pady=(4, 0)
         )
 
         config.columnconfigure(1, weight=1)
@@ -323,6 +342,9 @@ class AttackSimulatorGUI:
                     "accurate": match,
                     "details": result.details,
                     "timestamp": timestamp,
+                    "mode": self.mode_var.get(),
+                    "completed": result.completed,
+                    "execution_time": result.execution_time,
                 }
                 self.save_btn.configure(state="normal")
 

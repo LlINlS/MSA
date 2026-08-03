@@ -1,0 +1,58 @@
+{
+  "scenario_id": "SC-CONF-01",
+  "scenario_name": "Noslepumu atklasanas scenarijs",
+  "threat_category": "Konfiguraciju draudi",
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 143.35,
+  "expected_result": "attack_blocked",
+  "actual_result": "vulnerability_found",
+  "accurate": false,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "error_leak",
+        "description": "Sensitīvu datu atklāšana kļūdas ziņojumos",
+        "response_code": 400,
+        "response_time_ms": 0.0,
+        "blocked": false,
+        "detail": "Atrasti atslēgvārdi: ['password', 'secret', 'key', 'database']"
+      },
+      {
+        "name": "header_leak",
+        "description": "Servera informācijas atklāšana HTTP galvenēs",
+        "response_code": 200,
+        "response_time_ms": 7.65,
+        "blocked": false,
+        "detail": "Atklātās galvenes: {'server': 'openresty/1.31.1.1', 'x-powered-by': 'Flask/Werkzeug, nginx', 'x-debug': 'true'}"
+      },
+      {
+        "name": "debug_endpoint",
+        "description": "Debug/admin galapunktu pieejamības pārbaude",
+        "response_code": 200,
+        "response_time_ms": 103.96,
+        "blocked": false,
+        "detail": "Pieejami galapunkti: ['/config']"
+      },
+      {
+        "name": "stack_trace",
+        "description": "Stack trace atklāšana kļūdu gadījumā",
+        "response_code": 414,
+        "response_time_ms": 0.0,
+        "blocked": true,
+        "detail": "Nav stack trace atbildē"
+      },
+      {
+        "name": "env_exposure",
+        "description": "Vides mainīgo atklāšana API atbildēs",
+        "response_code": 200,
+        "response_time_ms": 31.74,
+        "blocked": false,
+        "detail": "Atklāti vides mainīgie: ['JWT_SECRET', 'DATABASE_URL']"
+      }
+    ]
+  },
+  "timestamp": "20260803_171006",
+  "mode": "unprotected",
+  "completed": true,
+  "execution_time": 0.14335083961486816
+}

@@ -26,7 +26,7 @@ SCENARIO_REGISTRY = {
     "SecretManagement": SecretExposureScenario,
 }
 
-def run_scenario(scenario_path: str, output_dir: str = "results") -> dict:
+def run_scenario(scenario_path, output_dir="results", mode="protected"):
     # 1. Konfigurācijas ielāde
     console.print(f"\n[bold]1. Ielādē konfigurāciju:[/bold] {scenario_path}")
     config = load_scenario(scenario_path)
@@ -52,6 +52,7 @@ def run_scenario(scenario_path: str, output_dir: str = "results") -> dict:
     console.print(f"\n[bold]3. Uzbrukuma izpilde:[/bold]")
     scenario = scenario_class(config, connector)
     result = scenario.run()
+    result.mode = mode
 
     # 4. Rezultātu attēlošana
     console.print(f"\n[bold]4. Rezultāti:[/bold]")
@@ -86,6 +87,7 @@ def run_scenario(scenario_path: str, output_dir: str = "results") -> dict:
         "threat_category": config.threat_category, "execution_time": result.execution_time,
         "expected_result": result.expected_result, "actual_result": result.actual_result,
         "accurate": match, "details": result.details, "timestamp": timestamp,
+        "mode": mode, "completed": result.completed,
     }
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
@@ -98,8 +100,9 @@ def main():
     parser = argparse.ArgumentParser(description="Uzbrukumu imitācijas dzinējs")
     parser.add_argument("--scenario", required=True)
     parser.add_argument("--output", default="results")
+    parser.add_argument("--mode", default="protected", choices=["protected", "unprotected"])
     args = parser.parse_args()
-    run_scenario(args.scenario, args.output)
+    run_scenario(args.scenario, args.output, args.mode)
 
 if __name__ == "__main__":
     main()

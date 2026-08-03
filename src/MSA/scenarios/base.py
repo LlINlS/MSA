@@ -33,9 +33,15 @@ class BaseScenario(ABC):
         
         # uzbrukuma soli + laika metrikas registresana
         self.metrics.start_timer()
-        result = self.execute_attack()
+        try:
+            result = self.execute_attack()
+            result.completed = True
+        except Exception as e:
+            result = MetricScenarios(scenario_id=self.config.id,
+                scenario_name=self.config.name, threat_category=self.config.threat_category,
+                success=False, completed=False, actual_result="Execution Error",
+                details={"error": str(e)})
         result.execution_time = self.metrics.stop_timer()
-
         # rezultatu registresana
         self.metrics.record(result)
         return result

@@ -2,7 +2,8 @@
   "scenario_id": "SC-AUTH-01",
   "scenario_name": "JWT manipulācijas scenārijs",
   "threat_category": "Autentifikācijas un autorizācijas draudi",
-  "execution_time": 0.05707907676696777,
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 54.37,
   "expected_result": "attack_blocked",
   "actual_result": "vulnerability_found",
   "accurate": false,
@@ -11,14 +12,14 @@
       {
         "name": "invalid_signature",
         "description": "JWT ar nederigu parakstu",
-        "response_code": 401,
-        "blocked": true
+        "response_code": 200,
+        "blocked": false
       },
       {
         "name": "expired_token",
         "description": "JWT ar novecojušu tokenu",
-        "response_code": 401,
-        "blocked": true
+        "response_code": 200,
+        "blocked": false
       },
       {
         "name": "role_escalation",
@@ -29,10 +30,13 @@
       {
         "name": "algorithm_none",
         "description": "JWT ar alg: none (bez paraksta)",
-        "response_code": 401,
-        "blocked": true
+        "response_code": 200,
+        "blocked": false
       }
     ]
   },
-  "timestamp": "20260522_154740"
+  "timestamp": "20260803_170949",
+  "mode": "unprotected",
+  "completed": true,
+  "execution_time": 0.05437326431274414
 }

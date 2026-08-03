@@ -1,0 +1,166 @@
+{
+  "scenario_id": "SC-AVAL-01",
+  "scenario_name": "DoS uzbrukuma scenarijs",
+  "threat_category": "Pieejamibas draudi",
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 1079.98,
+  "expected_result": "attack_blocked",
+  "actual_result": "attack_blocked",
+  "accurate": true,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "request_flood",
+        "description": "Nosūtīti 20 pieprasījumi ar 50ms intervālu",
+        "response_code": 429,
+        "blocked": true
+      },
+      {
+        "name": "rate_limit_activation",
+        "description": "Tempa ierobežotājs aktivizējās pie 11. pieprasījuma",
+        "response_code": 11,
+        "blocked": true
+      },
+      {
+        "name": "service_availability",
+        "description": "Pēc 10 bloķētiem pieprasījumiem serviss joprojām pieejams",
+        "response_code": 200,
+        "blocked": true
+      }
+    ],
+    "statistics": {
+      "total_requests": 20,
+      "passed": 10,
+      "blocked": 10,
+      "avg_response_time_ms": 2.14,
+      "activation_point": 11,
+      "rate_limit_threshold": 10
+    },
+    "all_requests": [
+      {
+        "request_number": 1,
+        "status_code": 200,
+        "response_time_ms": 0.0,
+        "rate_limited": false
+      },
+      {
+        "request_number": 2,
+        "status_code": 200,
+        "response_time_ms": 1.98,
+        "rate_limited": false
+      },
+      {
+        "request_number": 3,
+        "status_code": 200,
+        "response_time_ms": 2.02,
+        "rate_limited": false
+      },
+      {
+        "request_number": 4,
+        "status_code": 200,
+        "response_time_ms": 3.2,
+        "rate_limited": false
+      },
+      {
+        "request_number": 5,
+        "status_code": 200,
+        "response_time_ms": 0.0,
+        "rate_limited": false
+      },
+      {
+        "request_number": 6,
+        "status_code": 200,
+        "response_time_ms": 4.04,
+        "rate_limited": false
+      },
+      {
+        "request_number": 7,
+        "status_code": 200,
+        "response_time_ms": 2.93,
+        "rate_limited": false
+      },
+      {
+        "request_number": 8,
+        "status_code": 200,
+        "response_time_ms": 1.54,
+        "rate_limited": false
+      },
+      {
+        "request_number": 9,
+        "status_code": 200,
+        "response_time_ms": 3.17,
+        "rate_limited": false
+      },
+      {
+        "request_number": 10,
+        "status_code": 200,
+        "response_time_ms": 2.04,
+        "rate_limited": false
+      },
+      {
+        "request_number": 11,
+        "status_code": 429,
+        "response_time_ms": 0.0,
+        "rate_limited": true
+      },
+      {
+        "request_number": 12,
+        "status_code": 429,
+        "response_time_ms": 0.52,
+        "rate_limited": true
+      },
+      {
+        "request_number": 13,
+        "status_code": 429,
+        "response_time_ms": 3.21,
+        "rate_limited": true
+      },
+      {
+        "request_number": 14,
+        "status_code": 429,
+        "response_time_ms": 3.09,
+        "rate_limited": true
+      },
+      {
+        "request_number": 15,
+        "status_code": 429,
+        "response_time_ms": 1.71,
+        "rate_limited": true
+      },
+      {
+        "request_number": 16,
+        "status_code": 429,
+        "response_time_ms": 3.02,
+        "rate_limited": true
+      },
+      {
+        "request_number": 17,
+        "status_code": 429,
+        "response_time_ms": 0.0,
+        "rate_limited": true
+      },
+      {
+        "request_number": 18,
+        "status_code": 429,
+        "response_time_ms": 4.76,
+        "rate_limited": true
+      },
+      {
+        "request_number": 19,
+        "status_code": 429,
+        "response_time_ms": 1.93,
+        "rate_limited": true
+      },
+      {
+        "request_number": 20,
+        "status_code": 429,
+        "response_time_ms": 3.55,
+        "rate_limited": true
+      }
+    ]
+  },
+  "timestamp": "20260803_172829",
+  "mode": "protected",
+  "completed": true,
+  "execution_time": 1.079979419708252
+}

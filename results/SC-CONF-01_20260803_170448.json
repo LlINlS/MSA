@@ -1,0 +1,58 @@
+{
+  "scenario_id": "SC-CONF-01",
+  "scenario_name": "Noslepumu atklasanas scenarijs",
+  "threat_category": "Konfiguraciju draudi",
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 142.71,
+  "expected_result": "attack_blocked",
+  "actual_result": "vulnerability_found",
+  "accurate": false,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "error_leak",
+        "description": "Sensitīvu datu atklāšana kļūdas ziņojumos",
+        "response_code": 400,
+        "response_time_ms": 27.35,
+        "blocked": true,
+        "detail": "Nav sensitīvu datu kļūdas ziņojumā"
+      },
+      {
+        "name": "header_leak",
+        "description": "Servera informācijas atklāšana HTTP galvenēs",
+        "response_code": 200,
+        "response_time_ms": 14.6,
+        "blocked": false,
+        "detail": "Atklātās galvenes: {'server': 'openresty'}"
+      },
+      {
+        "name": "debug_endpoint",
+        "description": "Debug/admin galapunktu pieejamības pārbaude",
+        "response_code": 404,
+        "response_time_ms": 78.87,
+        "blocked": true,
+        "detail": "Nav pieejamu debug galapunktu"
+      },
+      {
+        "name": "stack_trace",
+        "description": "Stack trace atklāšana kļūdu gadījumā",
+        "response_code": 414,
+        "response_time_ms": 16.17,
+        "blocked": true,
+        "detail": "Nav stack trace atbildē"
+      },
+      {
+        "name": "env_exposure",
+        "description": "Vides mainīgo atklāšana API atbildēs",
+        "response_code": 200,
+        "response_time_ms": 5.72,
+        "blocked": true,
+        "detail": "Nav atklātu vides mainīgo"
+      }
+    ]
+  },
+  "timestamp": "20260803_170448",
+  "mode": "protected",
+  "completed": true,
+  "execution_time": 0.14271211624145508
+}

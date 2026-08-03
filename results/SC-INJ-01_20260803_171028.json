@@ -2,7 +2,8 @@
   "scenario_id": "SC-INJ-01",
   "scenario_name": "SQL injection scenarijs",
   "threat_category": "Lietojuma konteksta draudi",
-  "execution_time": 0.013651847839355469,
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 31.12,
   "expected_result": "attack_blocked",
   "actual_result": "vulnerability_found",
   "accurate": false,
@@ -10,58 +11,61 @@
     "sub_scenarios": [
       {
         "name": "basic_or",
-        "description": "Klasiska OR injection",
+        "description": "OR injection",
         "payload": "' OR '1'='1",
         "response_code": 200,
-        "response_time_ms": 2.68,
+        "response_time_ms": 6.48,
         "blocked": false
       },
       {
         "name": "drop_table",
-        "description": "DROP TABLE komanda",
+        "description": "DROP TABLE vaicajums",
         "payload": "'; DROP TABLE orders;--",
-        "response_code": 400,
-        "response_time_ms": 0.5,
-        "blocked": true
+        "response_code": 200,
+        "response_time_ms": 5.33,
+        "blocked": false
       },
       {
         "name": "union_select",
         "description": "UNION SELECT injection",
         "payload": "' UNION SELECT * FROM users--",
-        "response_code": 400,
-        "response_time_ms": 3.2,
-        "blocked": true
+        "response_code": 200,
+        "response_time_ms": 4.24,
+        "blocked": false
       },
       {
         "name": "comment_bypass",
-        "description": "Komentara apiesana",
+        "description": "Komentara apiesana ar --",
         "payload": "admin'--",
-        "response_code": 400,
-        "response_time_ms": 2.82,
-        "blocked": true
+        "response_code": 200,
+        "response_time_ms": 4.8,
+        "blocked": false
       },
       {
         "name": "semicolon_chain",
-        "description": "Vaicajumu kjedosana ar semikolu",
+        "description": "Vaicajumi (batched sql injection)",
         "payload": "test; DELETE FROM orders",
-        "response_code": 400,
-        "response_time_ms": 0.85,
-        "blocked": true
+        "response_code": 200,
+        "response_time_ms": 4.43,
+        "blocked": false
       },
       {
         "name": "safe_input",
-        "description": "Legals meklesanas pieprasijums (kontroles tests)",
-        "payload": "Laptop",
+        "description": "safe input (kontroles tests)",
+        "payload": "hello",
         "response_code": 200,
-        "response_time_ms": 0.0,
+        "response_time_ms": 5.84,
         "blocked": false
       }
     ],
     "statistics": {
       "total_payloads": 6,
-      "blocked": 4,
-      "passed": 2
+      "blocked": 0,
+      "passed": 6
     }
   },
-  "timestamp": "20260522_184721"
+  "timestamp": "20260803_171028",
+  "mode": "unprotected",
+  "completed": true,
+  "execution_time": 0.031119108200073242
 }

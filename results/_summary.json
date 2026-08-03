@@ -1,0 +1,10 @@
+{
+  "runs_total": 100,
+  "avg_time_s": 0.2728,
+  "coverage_pct": 100.0,
+  "coverage_ratio": "6/6",
+  "false_positive_rate_pct": 4.55,
+  "detection_rate_pct": 95.0,
+  "stability_pct": 100.0,
+  "integration_steps": 5
+}

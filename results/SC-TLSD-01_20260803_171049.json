@@ -1,0 +1,49 @@
+{
+  "scenario_id": "SC-TLSD-01",
+  "scenario_name": "TLS pazemināšanas scenarijs",
+  "threat_category": "Tikla konteksta draudi",
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 41.18,
+  "expected_result": "attack_blocked",
+  "actual_result": "vulnerability_found",
+  "accurate": false,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "http_plaintext",
+        "description": "Pieprasījums pa HTTP (bez TLS šifrēšanas)",
+        "response_code": 200,
+        "response_time_ms": 3.72,
+        "blocked": false,
+        "detail": "Serviss atbild pa HTTP — dati nav šifrēti"
+      },
+      {
+        "name": "missing_hsts",
+        "description": "HSTS (Strict-Transport-Security) galvenes pārbaude",
+        "response_code": 200,
+        "response_time_ms": 5.54,
+        "blocked": false,
+        "detail": "HSTS: NAV ATRASTS"
+      },
+      {
+        "name": "ssl_verify_disabled",
+        "description": "TLS sertifikāta validācijas pārbaude",
+        "response_code": null,
+        "blocked": false,
+        "detail": "HTTPS ports nav pieejams — TLS nav konfigurēts"
+      },
+      {
+        "name": "redirect_check",
+        "description": "HTTP → HTTPS pārvirzīšanas pārbaude",
+        "response_code": 200,
+        "response_time_ms": 16.26,
+        "blocked": false,
+        "detail": "Nav pārvirzīšanas uz HTTPS"
+      }
+    ]
+  },
+  "timestamp": "20260803_171049",
+  "mode": "unprotected",
+  "completed": true,
+  "execution_time": 0.041176557540893555
+}

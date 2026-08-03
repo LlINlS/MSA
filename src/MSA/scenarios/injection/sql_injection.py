@@ -62,7 +62,7 @@ class SqlInjectionScenario(BaseScenario):
             )
             elapsed = (time.time() - start) * 1000
 
-            # 400 = validācija bloķēja, 200 = caurlaidis
+            # 400 = validācija bloķēja, 2xx = caurlaidis
             blocked = response.status_code == 400
 
             return {

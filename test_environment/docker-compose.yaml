@@ -3,32 +3,22 @@ services:
     build: ./gateway
     ports:
       - "8080:80"
-    depends_on:
-      - service_a
-      - service_b
-    networks:
-      - microservices
+      - "8443:443"
+    env_file: .env
+    depends_on: [service_a, service_b]
+    networks: [microservices]
 
   service_a:
     build: ./service_a
-    ports:
-      - "5001:5001"
-    environment:
-      - JWT_SECRET=test-secret-key-for-development
-    networks:
-      - microservices
+    ports: ["5001:5001"]
+    env_file: .env
+    networks: [microservices]
 
   service_b:
     build: ./service_b
-    ports:
-      - "5002:5002"
-    environment:
-      - JWT_SECRET=test-secret-key-for-development
-      - RATE_LIMIT=10
-      - RATE_LIMIT_ENABLED=true
-      - INPUT_VALIDATION=true
-    networks:
-      - microservices
+    ports: ["5002:5002"]
+    env_file: .env
+    networks: [microservices]
 
 networks:
   microservices:

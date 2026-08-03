@@ -54,7 +54,7 @@ class TlsDowngradeScenario(BaseScenario):
         url = f"{self.http_url}{self.target_endpoint}"
         try:
             start = time.time()
-            response = requests.get(url, timeout=5)
+            response = requests.get(url, timeout=5, allow_redirects=False)
             elapsed = (time.time() - start) * 1000
 
             # Ja serviss atbild uz HTTP bez pārvirzīšanas uz HTTPS — nedross

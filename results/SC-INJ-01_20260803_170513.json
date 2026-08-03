@@ -1,0 +1,71 @@
+{
+  "scenario_id": "SC-INJ-01",
+  "scenario_name": "SQL injection scenarijs",
+  "threat_category": "Lietojuma konteksta draudi",
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 19.46,
+  "expected_result": "attack_blocked",
+  "actual_result": "vulnerability_found",
+  "accurate": false,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "basic_or",
+        "description": "OR injection",
+        "payload": "' OR '1'='1",
+        "response_code": 400,
+        "response_time_ms": 8.12,
+        "blocked": true
+      },
+      {
+        "name": "drop_table",
+        "description": "DROP TABLE vaicajums",
+        "payload": "'; DROP TABLE orders;--",
+        "response_code": 400,
+        "response_time_ms": 2.59,
+        "blocked": true
+      },
+      {
+        "name": "union_select",
+        "description": "UNION SELECT injection",
+        "payload": "' UNION SELECT * FROM users--",
+        "response_code": 400,
+        "response_time_ms": 0.0,
+        "blocked": true
+      },
+      {
+        "name": "comment_bypass",
+        "description": "Komentara apiesana ar --",
+        "payload": "admin'--",
+        "response_code": 400,
+        "response_time_ms": 0.0,
+        "blocked": true
+      },
+      {
+        "name": "semicolon_chain",
+        "description": "Vaicajumi (batched sql injection)",
+        "payload": "test; DELETE FROM orders",
+        "response_code": 400,
+        "response_time_ms": 0.0,
+        "blocked": true
+      },
+      {
+        "name": "safe_input",
+        "description": "safe input (kontroles tests)",
+        "payload": "hello",
+        "response_code": 200,
+        "response_time_ms": 8.75,
+        "blocked": false
+      }
+    ],
+    "statistics": {
+      "total_payloads": 6,
+      "blocked": 5,
+      "passed": 1
+    }
+  },
+  "timestamp": "20260803_170513",
+  "mode": "protected",
+  "completed": true,
+  "execution_time": 0.019459962844848633
+}

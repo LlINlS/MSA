@@ -1,0 +1,50 @@
+{
+  "scenario_id": "SC-TLSD-01",
+  "scenario_name": "TLS pazemināšanas scenarijs",
+  "threat_category": "Tikla konteksta draudi",
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 53.29,
+  "expected_result": "attack_blocked",
+  "actual_result": "attack_blocked",
+  "accurate": true,
+  "details": {
+    "sub_scenarios": [
+      {
+        "name": "http_plaintext",
+        "description": "Pieprasījums pa HTTP (bez TLS šifrēšanas)",
+        "response_code": 301,
+        "response_time_ms": 2.29,
+        "blocked": true,
+        "detail": "Serviss pārvirza uz HTTPS"
+      },
+      {
+        "name": "missing_hsts",
+        "description": "HSTS (Strict-Transport-Security) galvenes pārbaude",
+        "response_code": 200,
+        "response_time_ms": 30.76,
+        "blocked": true,
+        "detail": "HSTS: max-age=31536000; includeSubDomains"
+      },
+      {
+        "name": "ssl_verify_disabled",
+        "description": "TLS sertifikāta validācijas pārbaude",
+        "response_code": 200,
+        "response_time_ms": 11.87,
+        "blocked": true,
+        "detail": "Derīgs TLS sertifikāts"
+      },
+      {
+        "name": "redirect_check",
+        "description": "HTTP → HTTPS pārvirzīšanas pārbaude",
+        "response_code": 301,
+        "response_time_ms": 5.42,
+        "blocked": true,
+        "detail": "Pārvirza uz: https://localhost:8443/secure"
+      }
+    ]
+  },
+  "timestamp": "20260803_170533",
+  "mode": "protected",
+  "completed": true,
+  "execution_time": 0.05329251289367676
+}

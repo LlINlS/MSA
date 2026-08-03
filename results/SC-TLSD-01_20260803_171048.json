@@ -1,8 +1,9 @@
 {
-  "scenario_id": "SC-NET-01",
+  "scenario_id": "SC-TLSD-01",
   "scenario_name": "TLS pazemināšanas scenarijs",
   "threat_category": "Tikla konteksta draudi",
-  "execution_time": 4.081736326217651,
+  "target_service": "http://localhost:8080",
+  "execution_time_ms": 37.52,
   "expected_result": "attack_blocked",
   "actual_result": "vulnerability_found",
   "accurate": false,
@@ -11,16 +12,16 @@
       {
         "name": "http_plaintext",
         "description": "Pieprasījums pa HTTP (bez TLS šifrēšanas)",
-        "response_code": 401,
-        "response_time_ms": 19.3,
+        "response_code": 200,
+        "response_time_ms": 27.07,
         "blocked": false,
         "detail": "Serviss atbild pa HTTP — dati nav šifrēti"
       },
       {
         "name": "missing_hsts",
         "description": "HSTS (Strict-Transport-Security) galvenes pārbaude",
-        "response_code": 401,
-        "response_time_ms": 4.0,
+        "response_code": 200,
+        "response_time_ms": 3.14,
         "blocked": false,
         "detail": "HSTS: NAV ATRASTS"
       },
@@ -34,12 +35,15 @@
       {
         "name": "redirect_check",
         "description": "HTTP → HTTPS pārvirzīšanas pārbaude",
-        "response_code": 401,
-        "response_time_ms": 12.59,
+        "response_code": 200,
+        "response_time_ms": 4.07,
         "blocked": false,
         "detail": "Nav pārvirzīšanas uz HTTPS"
       }
     ]
   },
-  "timestamp": "20260522_185838"
+  "timestamp": "20260803_171048",
+  "mode": "unprotected",
+  "completed": true,
+  "execution_time": 0.03751659393310547
 }

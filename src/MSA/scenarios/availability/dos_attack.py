@@ -95,7 +95,7 @@ class DosAttackScenario(BaseScenario):
                         "name": "service_availability",
                         "description": f"Pēc {blocked_count} bloķētiem pieprasījumiem serviss joprojām pieejams",
                         "response_code": 200,
-                        "blocked": True,  # Serviss palika pieejams = labi
+                        "blocked": True,  # Pakalpojums palika pieejams = labi
                     },
                 ],
                 "statistics": {

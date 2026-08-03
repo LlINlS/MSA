@@ -5,7 +5,7 @@ target_mechanism: "DoS"
 target_service: "http://localhost:8080"
 
 parameters:
-  target_endpoint: "/orders"
+  target_endpoint: "/ping"
   total_requests: 20
   delay_between_ms: 50
   rate_limit_threshold: 10
