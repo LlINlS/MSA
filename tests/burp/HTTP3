@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE items [
+<!ELEMENT items (item*)>
+<!ATTLIST items burpVersion CDATA "">
+<!ATTLIST items exportTime CDATA "">
+<!ELEMENT item (time, url, host, port, protocol, method, path, extension, request, status, responselength, mimetype, response, comment)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT protocol (#PCDATA)>
+<!ELEMENT method (#PCDATA)>
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT extension (#PCDATA)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT responselength (#PCDATA)>
+<!ELEMENT mimetype (#PCDATA)>
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT comment (#PCDATA)>
+]>
+<items burpVersion="2026.7.2" exportTime="Mon Aug 03 21:53:23 EEST 2026">
+  <item>
+    <time>Mon Aug 03 21:44:28 EEST 2026</time>
+    <url><![CDATA[http://localhost:8080/config]]></url>
+    <host ip="127.0.0.1">localhost</host>
+    <port>8080</port>
+    <protocol>http</protocol>
+    <method><![CDATA[GET]]></method>
+    <path><![CDATA[/config]]></path>
+    <extension>null</extension>
+    <request base64="true"><![CDATA[R0VUIC9jb25maWcgSFRUUC8xLjENCkhvc3Q6IGxvY2FsaG9zdDo4MDgwDQpVc2VyLUFnZW50OiBjdXJsLzguMTkuMA0KQWNjZXB0OiAqLyoNCkNvbm5lY3Rpb246IGtlZXAtYWxpdmUNCg0K]]></request>
+    <status>200</status>
+    <responselength>839</responselength>
+    <mimetype>JSON</mimetype>
+    <response base64="true"><![CDATA[SFRUUC8xLjEgMjAwIE9LDQpTZXJ2ZXI6IG9wZW5yZXN0eS8xLjMxLjEuMQ0KRGF0ZTogTW9uLCAwMyBBdWcgMjAyNiAxODo0NDoyOCBHTVQNCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbg0KQ29udGVudC1MZW5ndGg6IDYxMg0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KWC1Qb3dlcmVkLUJ5OiBGbGFzay9XZXJremV1Zw0KWC1EZWJ1ZzogdHJ1ZQ0KWC1Qb3dlcmVkLUJ5OiBuZ2lueA0KDQp7ImVudiI6eyJERUJVRyI6InRydWUiLCJHUEdfS0VZIjoiNzE2OTYwNUY2MkM3NTEzNTZEMDU0QTI2QTgyMUU2ODBFNUZBNjMwNSIsIkhPTUUiOiIvcm9vdCIsIkhPU1ROQU1FIjoiOWFjZTNhZWE3ZDllIiwiSU5QVVRfVkFMSURBVElPTiI6ImZhbHNlIiwiSldUX1NFQ1JFVCI6InRlc3Qtc2VjcmV0LWtleS1mb3ItZGV2ZWxvcG1lbnQiLCJKV1RfVkFMSURBVElPTiI6ImZhbHNlIiwiTEFORyI6IkMuVVRGLTgiLCJNU0FfTU9ERSI6InVucHJvdGVjdGVkIiwiUEFUSCI6Ii91c3IvbG9jYWwvYmluOi91c3IvbG9jYWwvc2JpbjovdXNyL2xvY2FsL2JpbjovdXNyL3NiaW46L3Vzci9iaW46L3NiaW46L2JpbiIsIlBZVEhPTl9TSEEyNTYiOiJjMDhiYzY1YTgxOTcxYzFkZDU3ODMxODI4MjY1MDMzNjk0NjZjN2U2NzM3NGQxNjQ2NTE5YWRmMDUyMDdiNjg0IiwiUFlUSE9OX1ZFUlNJT04iOiIzLjEyLjEzIiwiUkFURV9MSU1JVCI6IjEwIiwiUkFURV9MSU1JVF9FTkFCTEVEIjoiZmFsc2UiLCJUTFNfRU5BQkxFRCI6ImZhbHNlIiwiV0VSS1pFVUdfU0VSVkVSX0ZEIjoiMyJ9LCJqd3Rfc2VjcmV0IjoidGVzdC1zZWNyZXQta2V5LWZvci1kZXZlbG9wbWVudCIsInJhdGVfbGltaXQiOjEwfQo=]]></response>
+    <comment></comment>
+  </item>
+</items>

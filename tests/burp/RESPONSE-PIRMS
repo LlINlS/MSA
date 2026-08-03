@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE items [
+<!ELEMENT items (item*)>
+<!ATTLIST items burpVersion CDATA "">
+<!ATTLIST items exportTime CDATA "">
+<!ELEMENT item (time, url, host, port, protocol, method, path, extension, request, status, responselength, mimetype, response, comment)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT protocol (#PCDATA)>
+<!ELEMENT method (#PCDATA)>
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT extension (#PCDATA)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT responselength (#PCDATA)>
+<!ELEMENT mimetype (#PCDATA)>
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT comment (#PCDATA)>
+]>
+<items burpVersion="2026.7.2" exportTime="Mon Aug 03 21:54:46 EEST 2026">
+  <item>
+    <time>Mon Aug 03 21:53:59 EEST 2026</time>
+    <url><![CDATA[http://localhost:8080/orders/search?q=test]]></url>
+    <host ip="127.0.0.1">localhost</host>
+    <port>8080</port>
+    <protocol>http</protocol>
+    <method><![CDATA[GET]]></method>
+    <path><![CDATA[/orders/search?q=test]]></path>
+    <extension>null</extension>
+    <request base64="true"><![CDATA[R0VUIC9vcmRlcnMvc2VhcmNoP3E9dGVzdCBIVFRQLzEuMQ0KSG9zdDogbG9jYWxob3N0OjgwODANClVzZXItQWdlbnQ6IGN1cmwvOC4xOS4wDQpBY2NlcHQ6ICovKg0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KDQo=]]></request>
+    <status>200</status>
+    <responselength>241</responselength>
+    <mimetype>JSON</mimetype>
+    <response base64="true"><![CDATA[SFRUUC8xLjEgMjAwIE9LDQpTZXJ2ZXI6IG9wZW5yZXN0eS8xLjMxLjEuMQ0KRGF0ZTogTW9uLCAwMyBBdWcgMjAyNiAxODo1Mzo1OSBHTVQNCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbg0KQ29udGVudC1MZW5ndGg6IDE1DQpDb25uZWN0aW9uOiBrZWVwLWFsaXZlDQpYLVBvd2VyZWQtQnk6IEZsYXNrL1dlcmt6ZXVnDQpYLURlYnVnOiB0cnVlDQpYLVBvd2VyZWQtQnk6IG5naW54DQoNCnsicmVzdWx0cyI6W119Cg==]]></response>
+    <comment></comment>
+  </item>
+</items>
