@@ -4,21 +4,24 @@ Built with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the 
 
 # Uzstādīšana
 
-Klonēt repozitoriju un no projekta saknes izveidot virtuālo vidi:
+Klonēt repo ar: 
+```
+git clone https://github.com/LlINlS/MSA.git
+```
 
+Instalē projektu, virtuālo vidi:
 ```powershell
-# Windows / PowerShell
+# PowerShell/ IDE terminal:
 python -m venv venv
+
 .\venv\Scripts\Activate.ps1
+
 pip install -e .
 ```
 
 Komanda `pip install -e .` instalē projektu rediģējamā režīmā kopā ar visām
 atkarībām, kas norādītas `pyproject.toml` failā.
 
-# Atkaribu instalacija*
-
-* TODO
 
 # Testēšanas vide*
 
@@ -30,8 +33,10 @@ Testēšanas vidi veido API vārteja (openresty) un divi mikropakalpojumi (`serv
 
 Konfigurāciju nosaka `.env` fails. Pārslēgšana ir viens solis:
 
+
 ```powershell
 # aizsargātā konfigurācija
+(no \\test_environment path)
 copy .env.protected .env
 docker compose up -d --build --force-recreate
 
