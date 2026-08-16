@@ -80,6 +80,10 @@ MSA/
 └── pyproject.toml
 ```
 
+## “OWASP ZAP” un “Burp Suite” rezultātī:
+
+\tests
+
 ## Motivācijai
 
 hi (hello)
